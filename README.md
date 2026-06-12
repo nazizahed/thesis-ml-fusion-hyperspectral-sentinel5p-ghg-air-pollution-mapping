@@ -55,8 +55,8 @@ Using Conda is often easier if `pip` cannot install GeoPandas or Rasterio.
 ### Windows PowerShell
 
 ```powershell
-git clone https://github.com/nazizahed/ml-fusion-hyperspectral-sentinel5p-ghg-air-pollution-mapping.git
-cd ml-fusion-hyperspectral-sentinel5p-ghg-air-pollution-mapping
+git clone https://github.com/nazizahed/thesis-ml-fusion-hyperspectral-sentinel5p-ghg-air-pollution-mapping.git
+cd thesis-ml-fusion-hyperspectral-sentinel5p-ghg-air-pollution-mapping
 python -m venv .venv
 .\.venv\Scripts\Activate.ps1
 python -m pip install --upgrade pip
@@ -67,8 +67,8 @@ jupyter lab stage0/launch_carbonmapper_dashboard_only.ipynb
 ### macOS or Linux
 
 ```bash
-git clone https://github.com/nazizahed/ml-fusion-hyperspectral-sentinel5p-ghg-air-pollution-mapping.git
-cd ml-fusion-hyperspectral-sentinel5p-ghg-air-pollution-mapping
+git clone https://github.com/nazizahed/thesis-ml-fusion-hyperspectral-sentinel5p-ghg-air-pollution-mapping.git
+cd thesis-ml-fusion-hyperspectral-sentinel5p-ghg-air-pollution-mapping
 python3 -m venv .venv
 source .venv/bin/activate
 python -m pip install --upgrade pip
