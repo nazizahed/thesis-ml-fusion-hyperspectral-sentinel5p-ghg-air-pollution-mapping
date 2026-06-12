@@ -1,0 +1,12 @@
+folium
+geopandas
+ipython
+ipywidgets
+jupyterlab
+matplotlib
+numpy
+pandas
+rasterio
+requests
+scipy
+shapely
