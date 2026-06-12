@@ -11,25 +11,17 @@ matching.
 
 ## Research Workflow
 
-```text
-Stage 0: Carbon Mapper data access
-                 |
-                 v
-       Carbon Mapper plume CSV
-          /               \
-         v                 v
-Stage 1: Daily       Stage 2: Monthly
-cross-sensor         bivariate mapping
-visibility           and plume matching
-         |                 |
-         v                 v
-Ranked plume events   Monthly S5P classes
-and daily S5P context and plume summaries
-```
+**Stage 0: Carbon Mapper data access**
 
-Stage 0 provides the shared plume catalogue. Stage 1 analyzes short-term
-cross-sensor visibility around selected Tanager events, while Stage 2 assigns
-plumes to monthly Sentinel-5P observation and exceedance classes.
+Produces the shared Carbon Mapper plume CSV.
+
+**Stage 0 output feeds Stage 1: Cross-sensor visibility**
+
+Produces ranked Tanager plume events and daily Sentinel-5P context.
+
+**Stage 0 output feeds Stage 2: Monthly bivariate matching**
+
+Produces monthly Sentinel-5P classes and plume-level class summaries.
 
 ## Implemented Stages
 
