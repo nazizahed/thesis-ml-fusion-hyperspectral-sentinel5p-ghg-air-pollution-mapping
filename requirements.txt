@@ -1,5 +1,7 @@
+earthengine-api
 folium
 geopandas
+geemap
 ipython
 ipywidgets
 jupyterlab
@@ -8,5 +10,7 @@ numpy
 pandas
 rasterio
 requests
+scikit-learn
 scipy
 shapely
+tqdm

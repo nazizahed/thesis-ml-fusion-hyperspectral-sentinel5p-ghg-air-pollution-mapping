@@ -14,6 +14,7 @@ venv/
 
 # Generated dashboard data and exports
 cm_app_outputs/
+stage1_outputs/
 plumes_*.csv
 state_stats*.csv
 *.html

@@ -1,13 +1,13 @@
 # Machine Learning Fusion of Hyperspectral-derived and Sentinel-5P Data for Greenhouse Gas and Air Pollution Mapping
 
-An interactive Jupyter dashboard for querying, exploring, mapping, and
-summarizing Carbon Mapper methane (CH4) and carbon dioxide (CO2) plume
-observations.
+Jupyter workflows for Carbon Mapper plume exploration and cross-sensor
+analysis between high-resolution Tanager methane observations and
+Sentinel-5P XCH4 context.
 
-This repository currently contains **Stage 0** of the thesis implementation.
-Stage 0 is a Carbon Mapper data-access and exploratory-analysis component. It
-does not contain Sentinel-5P/TROPOMI processing, Google Earth Engine matching,
-or formal validation of emission estimates.
+The repository currently contains Stage 0 and Stage 1 of the thesis
+implementation. Stage 0 provides Carbon Mapper data access and exploratory
+analysis. Stage 1 ranks Tanager CH4 plume events, forms spatio-temporal plume
+groups, and compares them with daily Sentinel-5P methane context.
 
 ## Main Features
 
@@ -21,6 +21,11 @@ or formal validation of emission estimates.
   clusters, and heatmaps.
 - Optionally estimate plume area from linked Carbon Mapper raster products.
 - Export state/province statistics and interactive Folium maps.
+- Compute Tanager plume-mask statistics from Carbon Mapper raster products.
+- Rank high-resolution plume events using normalized weighted scoring.
+- Associate nearby plume events within configurable space-time windows.
+- Query Sentinel-5P XCH4 context through Google Earth Engine.
+- Produce cross-sensor tables, maps, and qualitative comparison figures.
 
 ## Repository Structure
 
@@ -29,23 +34,31 @@ or formal validation of emission estimates.
 |-- stage0/
 |   |-- cm_app_carbonmapper_only.py
 |   `-- launch_carbonmapper_dashboard_only.ipynb
+|-- stage1/
+|   |-- README.md
+|   `-- stage1_cross_sensor_visibility_final.ipynb
 |-- docs/
-|   `-- technical-reference.md
+|   |-- technical-reference.md
+|   `-- stage1-technical-reference.md
 |-- .gitignore
 |-- README.md
 `-- requirements.txt
 ```
 
-The implementation details, processing assumptions, and output fields are
-documented in [docs/technical-reference.md](docs/technical-reference.md).
+Stage-specific instructions and technical references:
+
+- [Stage 0 technical reference](docs/technical-reference.md)
+- [Stage 1 user guide](stage1/README.md)
+- [Stage 1 technical reference](docs/stage1-technical-reference.md)
 
 ## Requirements
 
 - Python 3.10-3.12 is recommended.
 - JupyterLab, Jupyter Notebook, or Google Colab.
-- A Carbon Mapper API token.
+- A Carbon Mapper API token for Stage 0.
+- Google Earth Engine access and an authorized Cloud project for Stage 1.
 - Internet access to the Carbon Mapper API, Natural Earth boundary archives,
-  and linked raster products when area estimation is enabled.
+  linked raster products, and Earth Engine services.
 
 Geospatial Python packages may require platform-specific binary libraries.
 Using Conda is often easier if `pip` cannot install GeoPandas or Rasterio.
@@ -80,7 +93,31 @@ Run the notebook cells from top to bottom. The installation cell inside the
 notebook is primarily intended for Colab and can be skipped after installing
 `requirements.txt` locally.
 
-## API Token
+## Stage Workflow
+
+### Stage 0: Carbon Mapper dashboard
+
+Launch:
+
+```bash
+jupyter lab stage0/launch_carbonmapper_dashboard_only.ipynb
+```
+
+Use Stage 0 to query Carbon Mapper plume records and export a raw plume CSV.
+
+### Stage 1: Cross-sensor visibility
+
+Launch:
+
+```bash
+jupyter lab stage1/stage1_cross_sensor_visibility_final.ipynb
+```
+
+Set `RAW_CM_CSV` to a Stage 0 CSV, configure an authorized `EE_PROJECT`, and
+run the notebook in order. Detailed instructions are in
+[stage1/README.md](stage1/README.md).
+
+## Stage 0 API Token
 
 The repository does not contain an API token. The notebook asks for one using
 a hidden prompt and stores it only in the current Python process.
@@ -102,7 +139,7 @@ jupyter lab stage0/launch_carbonmapper_dashboard_only.ipynb
 Do not put a real token in the notebook, Python module, `.env` files committed
 to Git, screenshots, or issue reports.
 
-## Using the Dashboard
+## Using the Stage 0 Dashboard
 
 1. Run all notebook cells through the cell that calls `app.display()`.
 2. Select a country. The dashboard downloads the corresponding Natural Earth
