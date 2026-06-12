@@ -12,8 +12,12 @@ venv/
 .env
 .env.*
 
-# Generated dashboard data
+# Generated dashboard data and exports
+cm_app_outputs/
 plumes_*.csv
+state_stats*.csv
+*.html
+environment-lock.txt
 
 # Editors and operating systems
 .idea/
