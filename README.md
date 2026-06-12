@@ -4,10 +4,12 @@ Jupyter workflows for Carbon Mapper plume exploration and cross-sensor
 analysis between high-resolution Tanager methane observations and
 Sentinel-5P XCH4 context.
 
-The repository currently contains Stage 0 and Stage 1 of the thesis
+The repository currently contains Stage 0, Stage 1, and Stage 2 of the thesis
 implementation. Stage 0 provides Carbon Mapper data access and exploratory
 analysis. Stage 1 ranks Tanager CH4 plume events, forms spatio-temporal plume
-groups, and compares them with daily Sentinel-5P methane context.
+groups, and compares them with daily Sentinel-5P methane context. Stage 2
+creates monthly Sentinel-5P bivariate observation/exceedance maps and matches
+Carbon Mapper plumes to their monthly classes.
 
 ## Main Features
 
@@ -26,6 +28,10 @@ groups, and compares them with daily Sentinel-5P methane context.
 - Associate nearby plume events within configurable space-time windows.
 - Query Sentinel-5P XCH4 context through Google Earth Engine.
 - Produce cross-sensor tables, maps, and qualitative comparison figures.
+- Generate monthly CONUS Sentinel-5P valid and exceedance count rasters.
+- Encode fixed-bin bivariate classes including NoData and NoEx.
+- Match plume observations to their month-specific Sentinel-5P class.
+- Summarize plume counts, emissions, sectors, and instruments by class.
 
 ## Repository Structure
 
@@ -37,9 +43,13 @@ groups, and compares them with daily Sentinel-5P methane context.
 |-- stage1/
 |   |-- README.md
 |   `-- stage1_cross_sensor_visibility_final.ipynb
+|-- stage2/
+|   |-- README.md
+|   `-- stage2_complete_bivariate_pipeline_with_plume_matching.ipynb
 |-- docs/
 |   |-- technical-reference.md
-|   `-- stage1-technical-reference.md
+|   |-- stage1-technical-reference.md
+|   `-- stage2-technical-reference.md
 |-- .gitignore
 |-- README.md
 `-- requirements.txt
@@ -50,13 +60,16 @@ Stage-specific instructions and technical references:
 - [Stage 0 technical reference](docs/technical-reference.md)
 - [Stage 1 user guide](stage1/README.md)
 - [Stage 1 technical reference](docs/stage1-technical-reference.md)
+- [Stage 2 user guide](stage2/README.md)
+- [Stage 2 technical reference](docs/stage2-technical-reference.md)
 
 ## Requirements
 
 - Python 3.10-3.12 is recommended.
 - JupyterLab, Jupyter Notebook, or Google Colab.
 - A Carbon Mapper API token for Stage 0.
-- Google Earth Engine access and an authorized Cloud project for Stage 1.
+- Google Earth Engine access and an authorized Cloud project for Stages 1-2.
+- Google Drive storage for Stage 2 monthly GeoTIFF exports.
 - Internet access to the Carbon Mapper API, Natural Earth boundary archives,
   linked raster products, and Earth Engine services.
 
@@ -116,6 +129,19 @@ jupyter lab stage1/stage1_cross_sensor_visibility_final.ipynb
 Set `RAW_CM_CSV` to a Stage 0 CSV, configure an authorized `EE_PROJECT`, and
 run the notebook in order. Detailed instructions are in
 [stage1/README.md](stage1/README.md).
+
+### Stage 2: Monthly bivariate mapping and plume matching
+
+Launch:
+
+```bash
+jupyter lab stage2/stage2_complete_bivariate_pipeline_with_plume_matching.ipynb
+```
+
+Configure the Earth Engine project, Drive folders, study period, and
+`PLUME_CSV`. Keep `RUN_GEE_EXPORTS = False` until the export settings and task
+volume have been reviewed. Detailed instructions are in
+[stage2/README.md](stage2/README.md).
 
 ## Stage 0 API Token
 

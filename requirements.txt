@@ -8,6 +8,7 @@ jupyterlab
 matplotlib
 numpy
 pandas
+pyproj
 rasterio
 requests
 scikit-learn
